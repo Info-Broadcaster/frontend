@@ -23,7 +23,6 @@ export default function Edition() {
   const [isLoadingBubbles, setIsLoadingBubbles] = useState(true);
   const [isSent, setIsSent] = useState(false);
   const [suggestBubbleTheme, setSuggestBubbleTheme] = useState([]);
-  const [finalBubbles, setFinalBubbles] = useState([]);
 
   const handleCheck = (jid, isChecked) => {
     setIsSent(false);
@@ -99,8 +98,8 @@ Transmise en octobre au Parquet national financier, sa requête n’a donc rien 
 
   useEffect(() => {
     var newList = [];
-    bubbles.forEach((bubble) => {
-      if (suggestBubbleTheme.includes(bubble.topic)) {
+    bubbles?.forEach((bubble) => {
+      if (suggestBubbleTheme?.includes(bubble.topic)) {
         bubble.isSuggest = true;
         checkedItems.push(bubble.jid);
       } else {
