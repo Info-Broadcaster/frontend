@@ -11,7 +11,7 @@ import axiosInstance from "../axiosInstance";
 import DialogDefault from "./components/DialogDefaut";
 
 export default function Edition() {
-  const isDebugMode = true;
+  const isDebugMode = false;
   const { link, lang } = useParams();
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
@@ -22,6 +22,8 @@ export default function Edition() {
   const [checkedItems, setCheckedItems] = useState([]);
   const [isLoadingBubbles, setIsLoadingBubbles] = useState(true);
   const [isSent, setIsSent] = useState(false);
+  const [suggestBubbleTheme, setSuggestBubbleTheme] = useState([]);
+  const [finalBubbles, setFinalBubbles] = useState([]);
 
   const handleCheck = (jid, isChecked) => {
     setIsSent(false);
@@ -60,6 +62,9 @@ export default function Edition() {
           setContent(response.data.data.summarized);
           setSubject(response.data.data.title);
           setTheme(response.data.data.themes);
+          setSuggestBubbleTheme(
+            response.data.data.suggestThemeFromTopicsInBubbles
+          );
           if (response.data.status === "error") {
             // setIsError(true);
             console.error(response.data.message);
@@ -91,6 +96,20 @@ Transmise en octobre au Parquet national financier, sa requête n’a donc rien 
       setIsLoading(false);
     }
   }, [link, lang, isDebugMode]);
+
+  useEffect(() => {
+    var newList = [];
+    bubbles.forEach((bubble) => {
+      if (suggestBubbleTheme.includes(bubble.topic)) {
+        bubble.isSuggest = true;
+        checkedItems.push(bubble.jid);
+      } else {
+        bubble.isSuggest = false;
+      }
+      newList.push(bubble);
+    });
+    console.log(newList);
+  }, [suggestBubbleTheme, bubbles]);
 
   return (
     <PageLayer title="Edition">
