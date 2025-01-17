@@ -5,6 +5,7 @@ export default function BubbleItem({
   topic,
   onCheck,
   checkedBubbles,
+  isSuggest,
 }) {
   const isChecked = checkedBubbles.includes(jid); // Vérifiez si l'élément est dans la liste cochée
 
@@ -31,6 +32,7 @@ export default function BubbleItem({
         <h3 className="font-bold">{name}</h3>
         <p>{topic}</p>
       </div>
+      {isSuggest && <img src={"/bulb.png"} alt="bulb" className="h-12 w-12" />}
       <input
         type="checkbox"
         name="bubble"
