@@ -7,6 +7,7 @@ import LogIn from "./LogIn.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import GuestRoute from "./GuestRoute.jsx";
 import LogOut from "./LogOut.jsx";
+import History from "./History.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <App />,
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/historique",
+    element: (
+      <ProtectedRoute>
+        <History />,
       </ProtectedRoute>
     ),
   },
