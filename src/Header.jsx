@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import isAuthenticated from "./functions/IsAuthenticated";
 import { IoLogOutOutline } from "react-icons/io5";
+import { MdOutlineHistory } from "react-icons/md";
 
 export default function Header() {
   const location = useLocation();
@@ -16,9 +17,14 @@ export default function Header() {
         <div className="text-white text-2xl">Info Broadcaster</div>
       </Link>
       {isAuthenticated() ? (
-        <Link to={"/deconnexion"} className="text-white text-lg mr-10">
-          <IoLogOutOutline className="text-3xl" />
-        </Link>
+        <div className="flex w-40 items-end justify-end gap-3 ">
+          <Link to={"/historique"} className="text-white  ">
+            <MdOutlineHistory className="text-3xl " />
+          </Link>
+          <Link to={"/deconnexion"} className="text-white  ">
+            <IoLogOutOutline className="text-3xl " />
+          </Link>
+        </div>
       ) : (
         pathname != "/connexion" && (
           <Link to={"/connexion"} className="text-white text-lg ml-10">
