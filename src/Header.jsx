@@ -8,7 +8,7 @@ export default function Header() {
   const { pathname } = location;
 
   return (
-    <header className="flex h-[8vh] w-full bg-purple-700 items-center justify-between px-8 shadow-lg">
+    <header className="flex h-navbar w-full bg-purple-700 items-center justify-between px-8 shadow-lg">
       <Link to={"/"} className="flex items-center justify-center gap-3">
         <img
           src="/logo1.png"
