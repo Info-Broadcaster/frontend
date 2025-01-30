@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import isAuthenticated from "./functions/IsAuthenticated";
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineHistory } from "react-icons/md";
+// import ProfilDropDown from "./components/ProfilDropDown";
 
 export default function Header() {
   const location = useLocation();
@@ -24,6 +25,7 @@ export default function Header() {
           <Link to={"/deconnexion"} className="text-white  ">
             <IoLogOutOutline className="text-3xl " />
           </Link>
+          {/* <ProfilDropDown /> */}
         </div>
       ) : (
         pathname != "/connexion" && (

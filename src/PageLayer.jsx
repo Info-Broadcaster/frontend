@@ -4,7 +4,7 @@ export default function PageLayer({ title = undefined, children }) {
   return (
     <>
       <Header />
-      <main className=" w-full p-20 min-h-screen-navbar flex items-center justify-center ">
+      <main className=" w-full p-20 min-h-screen-navbar flex items-center justify-center animate-fade-in">
         <div className="w-full ">
           {title == undefined ? (
             <br />

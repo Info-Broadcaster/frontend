@@ -34,7 +34,7 @@ function App() {
 
   return (
     <PageLayer>
-      <div className="flex flex-col w-full items-center gap-10 pt-10 animate-fade-in">
+      <div className="flex flex-col w-full items-center gap-10 pt-10">
         <img
           src="/logo1.png"
           className="rounded-full h-28 w-28 transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-6 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.8)]"
