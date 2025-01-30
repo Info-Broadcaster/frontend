@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "InfoBroadcaster",
+    "version": "1.0",
+    "description": "Permet le partage rapide d'article sur Rainbow",
+    "icons": {
+        "16": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {}
+}
