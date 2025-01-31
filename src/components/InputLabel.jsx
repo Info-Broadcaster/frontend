@@ -1,3 +1,5 @@
+import MDEditor from "@uiw/react-md-editor";
+
 export default function InputLabel({
   label,
   value,
@@ -12,13 +14,9 @@ export default function InputLabel({
         <label>{label}</label>
       </span>
       {textarea ? (
-        <textarea
-          className="border w-5/6 text-start p-4 h-64 focus:outline-purple-700"
-          value={value || ""}
-          onChange={(e) => setValue(e.target.value)}
-          disabled={disabled}
-          placeholder={placeholder}
-        />
+        <div data-color-mode="light" className={"w-5/6  "}>
+          <MDEditor value={value} onChange={setValue} />
+        </div>
       ) : (
         <input
           type="text"
