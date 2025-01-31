@@ -5,10 +5,7 @@ export default function HistoryTable({ lines }) {
         <thead>
           <tr className="bg-purple-700 text-white">
             <th className="border border-gray-300 dark:border-gray-600 px-2 py-1">
-              Url de base
-            </th>
-            <th className="border border-gray-300 dark:border-gray-600 px-2 py-1">
-              Url de redirection
+              Url
             </th>
             <th className="border border-gray-300 dark:border-gray-600 px-2 py-1">
               Nombre de click
@@ -19,17 +16,12 @@ export default function HistoryTable({ lines }) {
         <tbody>
           {lines.map((line) => (
             <tr key={line?.id}>
-              <td className="border border-gray-300 dark:border-gray-700 text-center px-2 py-1 break-all">
-                <a href={line?.url} className="text-blue-500 hover:underline">
-                  {line?.url}
-                </a>
-              </td>
-              <td className="border border-gray-300 dark:border-gray-700 text-center px-2 py-1 break-all">
+              <td className="border border-gray-300 dark:border-gray-700 text-start px-2 py-1 break-all">
                 <a
                   href={line?.full_url}
                   className="text-blue-500 hover:underline"
                 >
-                  {line?.full_url}
+                  {line?.url}
                 </a>
               </td>
               <td className="border border-gray-300 dark:border-gray-700 text-center px-2 py-1">
