@@ -9,7 +9,12 @@ export default function BubbleList({ bubbles, onCheckBubble, checkedBubbles }) {
     );
   }
 
-  return bubbles.map((item) => (
+  const sortedBubbles = [...bubbles].sort((a, b) => {
+    if (a.isSuggest === b.isSuggest) return 0;
+    return a.isSuggest ? -1 : 1;
+  });
+
+  return sortedBubbles.map((item) => (
     <BubbleItem
       key={item.jid}
       jid={item.jid}
@@ -18,6 +23,7 @@ export default function BubbleList({ bubbles, onCheckBubble, checkedBubbles }) {
       topic={item.topic}
       onCheck={onCheckBubble}
       checkedBubbles={checkedBubbles}
+      isSuggest={item.isSuggest}
     />
   ));
 }

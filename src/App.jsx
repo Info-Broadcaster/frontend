@@ -10,6 +10,11 @@ function App() {
   const [link, setLink] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("fr");
   const navigate = useNavigate();
+  const availableLanguages = [
+    { code: "fr", name: "Français" },
+    { code: "en", name: "Anglais" },
+  ];
+
   function generateArticle() {
     if (link === "") {
       alert("Veuillez entrer un lien");
@@ -29,12 +34,16 @@ function App() {
 
   return (
     <PageLayer>
-      <div className="flex flex-col w-full items-center gap-10">
-        <img src="/logo1.png" className="rounded-full h-28 w-28" />
-        <h1 className="text-4xl">Bienvenue sur InfoBroadcaster</h1>
-        <p>
-          InfoBroadcaster est une application de diffusion d'informations, elle
-          permet de résumer des liens web et de les diffuser à un public ciblé.
+      <div className="flex flex-col w-full items-center gap-10 pt-10">
+        <img
+          src="/logo1.png"
+          className="rounded-full h-28 w-28 transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-6 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.8)]"
+        />
+        <h1 className="text-4xl">InfoBroadcaster</h1>
+        <p className="text-gray-600 text-lg text-center max-w-2xl mx-auto leading-relaxed">
+          InfoBroadcaster est une application de diffusion d'informations,
+          permettant de résumer des liens web et de les partager à un public
+          ciblé.
         </p>
         <div className="flex w-full justify-center">
           <input
@@ -48,10 +57,17 @@ function App() {
             name="langue"
             id="langue"
             onChange={onLanguageChange}
-            className="focus:outline-none bg-white"
+            className="focus:outline-none bg-purple-700 text-white h-14 px-3"
           >
-            <option value="fr">Français </option>
-            <option value="en">Anglais</option>
+            {availableLanguages.map((language) => (
+              <option
+                key={language.code}
+                value={language.code}
+                className="bg-white text-black rounded-none"
+              >
+                {language.name}
+              </option>
+            ))}
           </select>
         </div>
         <Button callback={() => generateArticle()}>
