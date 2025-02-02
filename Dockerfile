@@ -1,10 +1,21 @@
-FROM node:20-alpine
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
 
-CMD ["npm", "run", "dev"]
+RUN npm run build
+
+FROM nginx:alpine AS runner
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 \
+    CMD curl -f http://localhost || exit 1
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
