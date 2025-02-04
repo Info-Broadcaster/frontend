@@ -1,7 +1,4 @@
-FROM node:20-alpine AS builder
-
-ENV VITE_BACKEND_URL http://localhost:3000
-ENV VITE_DEBUG false
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -10,15 +7,8 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "curl", "-f", "http://localhost:8080" ] || exit 1
 
-FROM nginx:alpine AS runner
+EXPOSE 8080
 
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 \
-    CMD curl -f http://localhost || exit 1
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "npm", "run", "dev" ]
