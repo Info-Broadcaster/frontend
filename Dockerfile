@@ -1,7 +1,5 @@
 FROM node:20-alpine
 
-ENV VITE_BACKEND_URL http://backend:3000
-
 WORKDIR /app
 
 COPY package*.json ./
