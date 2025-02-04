@@ -1,5 +1,8 @@
 FROM node:20-alpine AS builder
 
+ENV VITE_BACKEND_URL http://localhost:3000
+ENV VITE_DEBUG false
+
 WORKDIR /app
 
 COPY package*.json ./
